@@ -4,18 +4,11 @@ server:
 spring:
   mvc:
     static-path-pattern: /static/**
-
-  security:
-    user:
-      name: 1234
-      password: 1234
-
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://localhost:3306/library
     username: root
     password: 1q2w3e4r
-
 
 mybatis:
   mapper-locations:

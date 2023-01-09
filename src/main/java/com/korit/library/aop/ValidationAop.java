@@ -1,5 +1,6 @@
-package com.koreait.library.aop;
+package com.korit.library.aop;
 
+import com.korit.library.exception.CustomValidationException;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
@@ -14,9 +15,8 @@ import java.util.Map;
 @Component
 public class ValidationAop {
 
-    @Pointcut("@annotation(com.koreait.library.Aop.annotation.ValidAspect)")
-    
-    private void pointCut(){}
+    @Pointcut("@annotation(com.korit.library.aop.annotation.ValidAspect)")
+    private void pointCut() {}
 
     @Around("pointCut()")
     public Object around(ProceedingJoinPoint proceedingJoinPoint) throws Throwable {
@@ -25,18 +25,23 @@ public class ValidationAop {
 
         BeanPropertyBindingResult bindingResult = null;
 
-        for(Object arg : args){
-            if(arg.getClass() == BeanPropertyBindingResult.class){
+        for(Object arg : args) {
+            if(arg.getClass() == BeanPropertyBindingResult.class) {
                 bindingResult = (BeanPropertyBindingResult) arg;
             }
         }
-        if(bindingResult.hasErrors()){
-            Map<String, String> errorMap = new HashMap<String, String>();
+
+        if(bindingResult.hasErrors()) {
+            Map<String, String> errorMap = new HashMap<>();
+
             bindingResult.getFieldErrors().forEach(error -> {
                 errorMap.put(error.getField(), error.getDefaultMessage());
             });
+
+            throw new CustomValidationException(errorMap);
         }
 
         return proceedingJoinPoint.proceed();
     }
+
 }

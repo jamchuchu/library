@@ -1,4 +1,4 @@
-package com.koreait.library.web.controller;
+package com.korit.library.web.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -9,12 +9,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class AccountController {
 
     @GetMapping("/login")
-    public String loadIndex(){
+    public String login() {
         return "account/login";
     }
 
     @GetMapping("/register")
-    public String register(){
+    public String register() {
         return "account/register";
     }
 }

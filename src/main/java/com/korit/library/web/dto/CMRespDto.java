@@ -1,4 +1,4 @@
-package com.koreait.library.web.dto;
+package com.korit.library.web.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
