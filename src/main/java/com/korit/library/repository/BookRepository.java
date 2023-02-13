@@ -3,6 +3,7 @@ package com.korit.library.repository;
 import com.korit.library.entity.BookImage;
 import com.korit.library.entity.BookMst;
 import com.korit.library.entity.CategoryView;
+import com.korit.library.entity.SearchBook;
 import com.korit.library.web.dto.*;
 import org.apache.ibatis.annotations.Mapper;
 
@@ -26,8 +27,10 @@ public interface BookRepository {
     D:  도서삭제
      */
 
+
     public int getBookTotalCount(SearchNumberListReqDto searchNumberListReqDto);
     public List<BookMst> searchBook(SearchReqDto searchReqDto);
+
     public BookMst findBookByBookCode(String bookCode);
 
     public List<CategoryView> findAllCategory();
@@ -44,6 +47,7 @@ public interface BookRepository {
 
     public List<BookImage> findBookImageAll(String bookCode);
     public BookImage findBookImageByImageId(int imageId);
+    public BookImage findBookImageByBookCode(String bookCode);
 
     public int deleteBookImage(int imageId);
 }

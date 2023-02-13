@@ -2,6 +2,18 @@ server:
   port: 8000
 
 spring:
+  security:
+    oauth2:
+      client:
+        registration:
+          google:
+            clientId: 918146073848-sp0v4d0vksakm1qn0c03p1613mshope1.apps.googleusercontent.com
+            clientSecret: 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
+            scope:
+              - email
+              - profile
+
+
   mvc:
     static-path-pattern: /static/**
     pathmatch:
@@ -18,4 +30,4 @@ mybatis:
 
 
 file:
-  path: C:/Users/hyemin/Desktop/Working/backEndStudy/library/upload
+  path: C:/Users/hyemin/Desktop/Working/backEndStudy/library/upload/
